@@ -18,49 +18,52 @@ class Followers {
   String? type;
   bool? siteAdmin;
 
-  Followers(
-      {this.login,
-        this.id,
-        this.nodeId,
-        this.avatarUrl,
-        this.gravatarId,
-        this.url,
-        this.htmlUrl,
-        this.followersUrl,
-        this.followingUrl,
-        this.gistsUrl,
-        this.starredUrl,
-        this.subscriptionsUrl,
-        this.organizationsUrl,
-        this.reposUrl,
-        this.eventsUrl,
-        this.receivedEventsUrl,
-        this.type,
-        this.siteAdmin});
+  Followers({
+    this.login,
+    this.id,
+    this.nodeId,
+    this.avatarUrl,
+    this.gravatarId,
+    this.url,
+    this.htmlUrl,
+    this.followersUrl,
+    this.followingUrl,
+    this.gistsUrl,
+    this.starredUrl,
+    this.subscriptionsUrl,
+    this.organizationsUrl,
+    this.reposUrl,
+    this.eventsUrl,
+    this.receivedEventsUrl,
+    this.type,
+    this.siteAdmin,
+  });
 
-  Followers.fromJson(Map<String, dynamic> json) {
-    login = json['login'];
-    id = json['id'];
-    nodeId = json['node_id'];
-    avatarUrl = json['avatar_url'];
-    gravatarId = json['gravatar_id'];
-    url = json['url'];
-    htmlUrl = json['html_url'];
-    followersUrl = json['followers_url'];
-    followingUrl = json['following_url'];
-    gistsUrl = json['gists_url'];
-    starredUrl = json['starred_url'];
-    subscriptionsUrl = json['subscriptions_url'];
-    organizationsUrl = json['organizations_url'];
-    reposUrl = json['repos_url'];
-    eventsUrl = json['events_url'];
-    receivedEventsUrl = json['received_events_url'];
-    type = json['type'];
-    siteAdmin = json['site_admin'];
+  factory Followers.fromJson(Map<String, dynamic> json) {
+    return Followers(
+      login: json['login'] as String?,
+      id: json['id'] as int?,
+      nodeId: json['node_id'] as String?,
+      avatarUrl: json['avatar_url'] as String?,
+      gravatarId: json['gravatar_id'] as String?,
+      url: json['url'] as String?,
+      htmlUrl: json['html_url'] as String?,
+      followersUrl: json['followers_url'] as String?,
+      followingUrl: json['following_url'] as String?,
+      gistsUrl: json['gists_url'] as String?,
+      starredUrl: json['starred_url'] as String?,
+      subscriptionsUrl: json['subscriptions_url'] as String?,
+      organizationsUrl: json['organizations_url'] as String?,
+      reposUrl: json['repos_url'] as String?,
+      eventsUrl: json['events_url'] as String?,
+      receivedEventsUrl: json['received_events_url'] as String?,
+      type: json['type'] as String?,
+      siteAdmin: json['site_admin'] as bool?,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['login'] = login;
     data['id'] = id;
     data['node_id'] = nodeId;

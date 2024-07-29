@@ -58,7 +58,10 @@ class WebServiceWithDioImpl implements WebService {
       {required String path, Map<String, dynamic>? queryParameters}) async {
     try {
       final response = await _dio!.get(path, queryParameters: queryParameters);
+     // print(response);
+
       return response.data;
+
     } on DioException catch (error) {
       throw AppSharedUtils.getCustomExceptionBasedOnDioException(error);
     }
