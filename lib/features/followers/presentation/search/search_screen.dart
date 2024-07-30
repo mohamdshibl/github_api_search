@@ -35,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   width: 80,height: 80,
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuoBv5MGefRD25M2HeXncjCa9qgGAvuSiDg&s'),
+                    backgroundImage: NetworkImage('https://w7.pngwing.com/pngs/857/611/png-transparent-github-git-hub-logo-icon-thumbnail.png'),
                   ),
                 ),
                 const SizedBox(height: 30,),
