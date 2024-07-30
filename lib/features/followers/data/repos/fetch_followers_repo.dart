@@ -5,7 +5,7 @@ import '../../model/followers.dart';
 import '../data_source/remote_data_source.dart';
 
 abstract class FetchFollowersRepo {
-  Future<Either<Failure,List<Followers>>> fetchUserFollowersFromDataSource();
+  Future<Either<Failure, List<Followers>>> fetchUserFollowersFromDataSource();
 }
 
 class FetchFollowersRepoImpl implements FetchFollowersRepo {
@@ -14,12 +14,17 @@ class FetchFollowersRepoImpl implements FetchFollowersRepo {
   FetchFollowersRepoImpl(this.fetchFollowersDataSource);
 
   @override
-  Future<Either<Failure,List<Followers>>> fetchUserFollowersFromDataSource() async {
+  Future<Either<Failure, List<Followers>>>
+      fetchUserFollowersFromDataSource() async {
     try {
       final response = await fetchFollowersDataSource.fetchFollowers();
       print('repo');
       print(response);
-      return right(response);
+      List<Followers> followers = [];
+      for (var i in response) {
+        followers.add(Followers.fromJson(i));
+      }
+      return right(followers);
     } catch (e) {
       return left(ServerFailure());
     }

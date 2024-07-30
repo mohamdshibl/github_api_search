@@ -23,7 +23,7 @@ static FollowersCubit get(context) => BlocProvider.of(context);
     print(failure.failMsg);
         },
         (followers) {
-      print(followers);
+      print(followers[0].id);
       print('suuuuuuuuuuuuucs');
       emit(FollowersSuccessState(followers: followers));}
   );
