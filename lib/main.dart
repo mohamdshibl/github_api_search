@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed:() {
           setState(() {
-            cubit.getFollowers();
+            //cubit.getFollowers();
           });
         },
         tooltip: 'Increment',

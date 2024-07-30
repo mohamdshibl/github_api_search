@@ -5,7 +5,7 @@ import '../../model/followers.dart';
 import '../data_source/remote_data_source.dart';
 
 abstract class FetchFollowersRepo {
-  Future<Either<Failure, List<Followers>>> fetchUserFollowersFromDataSource();
+  Future<Either<Failure, List<Followers>>> fetchUserFollowersFromDataSource(String username,{int pages=0});
 }
 
 class FetchFollowersRepoImpl implements FetchFollowersRepo {
@@ -15,9 +15,9 @@ class FetchFollowersRepoImpl implements FetchFollowersRepo {
 
   @override
   Future<Either<Failure, List<Followers>>>
-  fetchUserFollowersFromDataSource() async {
+  fetchUserFollowersFromDataSource(String username, {int pages = 0}) async {
     try {
-      final List<dynamic> response = await fetchFollowersDataSource.fetchFollowers();
+      final List<dynamic> response = await fetchFollowersDataSource.fetchFollowers( username, pages: pages);
       List<Followers> followers = response.map((item) => Followers.fromJson(item)).toList();
       return right(followers);
     }
