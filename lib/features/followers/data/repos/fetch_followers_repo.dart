@@ -15,21 +15,48 @@ class FetchFollowersRepoImpl implements FetchFollowersRepo {
 
   @override
   Future<Either<Failure, List<Followers>>>
-      fetchUserFollowersFromDataSource() async {
+  fetchUserFollowersFromDataSource() async {
     try {
-      final response = await fetchFollowersDataSource.fetchFollowers();
-      print('repo');
-      print(response);
-      List<Followers> followers = [];
-      for (var i in response) {
-        followers.add(Followers.fromJson(i));
-      }
+      final List<dynamic> response = await fetchFollowersDataSource.fetchFollowers();
+      List<Followers> followers = response.map((item) => Followers.fromJson(item)).toList();
       return right(followers);
-    } catch (e) {
+    }
+    catch (e) {
       return left(ServerFailure());
     }
   }
 }
+
+
+
+
+
+
+// try {
+//   final response = await fetchFollowersDataSource.fetchFollowers();
+//   List<Followers> followers = [];
+//   for (var i in response) {
+//     followers.add(Followers.fromJson(i));
+//   }
+//   return right(followers);
+
+
+  // Future<Either<Failure, List<Followers>>> fetchUserFollowersFromDataSource() async {
+  //   try {
+  //     // Fetch the data from the data source
+  //     final response = await fetchFollowersDataSource.fetchFollowers();
+  //
+  //     // Convert the response to a list of Followers
+  //     final followers = response.map((item) => Followers.fromJson(item)).toList();
+  //
+  //     // Return the list wrapped in a right Either
+  //     return right(followers);
+  //   } catch (e) {
+  //     // Handle and return the error wrapped in a left Either
+  //     return left(ServerFailure());
+  //   }
+  // }
+
 
 // abstract class FetchFollowersRepo {
 //   Future<Either<Failure, List<Followers>>> fetchUserFollowersFromDataSource();

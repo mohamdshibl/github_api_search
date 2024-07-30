@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/followers/data/repos/fetch_followers_repo.dart';
 import 'features/followers/dependecy_injection/injection.dart';
 import 'features/followers/logic/followers_cubit/followers_cubit.dart';
 void main() {
