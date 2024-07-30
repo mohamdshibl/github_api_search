@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -11,6 +9,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController textEditingController = TextEditingController();
+  double screenHeight = 0;
 
   void _getFollowers() {
       if (textEditingController.text == '')
@@ -22,8 +21,11 @@ class _SearchScreenState extends State<SearchScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Container(
+        height: screenHeight,
         color: Colors.black,
         child: Padding(
           padding: const EdgeInsets.all(20.0),

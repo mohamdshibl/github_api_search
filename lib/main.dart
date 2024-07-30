@@ -5,6 +5,7 @@ import 'features/followers/dependecy_injection/injection.dart';
 import 'features/followers/logic/followers_cubit/followers_cubit.dart';
 import 'features/followers/presentation/search/search_screen.dart';
 import 'features/user_details/presentation/uesr_details.dart';
+import 'layout/app_layout.dart';
 void main() {
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: UserDetails(),
+      home: AppLayout(),
     ),
 );
   }

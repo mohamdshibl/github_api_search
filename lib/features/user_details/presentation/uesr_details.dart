@@ -57,7 +57,7 @@ class UserDetails extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 35,),
+            const SizedBox(height: 35,),
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
