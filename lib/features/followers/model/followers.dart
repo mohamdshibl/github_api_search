@@ -44,7 +44,7 @@ class Followers {
       login: json['login'] as String?,
       id: json['id'] as int?,
       nodeId: json['node_id'] as String?,
-      avatarUrl: json['avatar_url'] as String?,
+      avatarUrl: json['avatar_url'] as String? ?? 'https://www.pngitem.com/pimgs/m/421-4212617_person-placeholder-image-transparent-hd-png-download.png',
       gravatarId: json['gravatar_id'] as String?,
       url: json['url'] as String?,
       htmlUrl: json['html_url'] as String?,

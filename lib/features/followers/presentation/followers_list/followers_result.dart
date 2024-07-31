@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../logic/followers_cubit/followers_cubit.dart';
 
 class FollowersResult extends StatefulWidget {
@@ -44,10 +43,7 @@ class _FollowersResultState extends State<FollowersResult> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: BlocBuilder<FollowersCubit, FollowersState>(
-
           builder: (context, state) {
-
-
             if (state is FollowersSuccessState) {
               return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -62,9 +58,8 @@ class _FollowersResultState extends State<FollowersResult> {
                     decoration: BoxDecoration(
                       color: Colors.black26,
                       borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://w7.pngwing.com/pngs/857/611/png-transparent-github-git-hub-logo-icon-thumbnail.png'),
+                      image:  DecorationImage(
+                          image: NetworkImage("${state.followers[index].avatarUrl}"),
                         fit: BoxFit.cover, // Ensure image covers the container
                       ),
                     ),
@@ -75,6 +70,13 @@ class _FollowersResultState extends State<FollowersResult> {
                           "${state.followers[index].login}",
                           style: const TextStyle(
                             fontSize: 16,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black,
+                                offset: Offset(5, 2),
+                                blurRadius: 4,
+                              ),
+                            ],
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -88,8 +90,9 @@ class _FollowersResultState extends State<FollowersResult> {
             if(state is FollowersFailureState){
 
             }
-            return  const Center(child:Text('hskjjj'));
-            //Center(child: CircularProgressIndicator(color: Colors.black,),);
+            return
+              //const Center(child:Text('hskjjj'));
+            const Center(child: CircularProgressIndicator(color: Colors.black,),);
           }
         ),
       ),
