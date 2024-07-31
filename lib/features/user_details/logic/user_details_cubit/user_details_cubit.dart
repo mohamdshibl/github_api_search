@@ -1,8 +1,33 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+
+import '../../data/repos/user_info_repo.dart';
 
 part 'user_details_state.dart';
 
 class UserDetailsCubit extends Cubit<UserDetailsState> {
-  UserDetailsCubit() : super(UserDetailsInitial());
+ final UserInfoRepo userInfoRepo ;
+
+  UserDetailsCubit(this.userInfoRepo) : super(UserDetailsInitial());
+
+  static UserDetailsCubit get(context) => BlocProvider.of(context);
+
+
+  void getFollowers (String username) async {
+    emit(UserDetailsLoadingState());
+    final either = await userInfoRepo.fetchUserInfoFromDataSource(username) ;
+    either.fold(
+            (failure){
+          emit(UserDetailsFailureState(failureMsg: failure.failMsg));
+          print(failure.failMsg);
+        },
+            (userInfo) {
+          print(userInfo[0].id);
+          emit(UserDetailsSuccessState(followers: userInfo));}
+    );
+  }
+
+
+
 }
