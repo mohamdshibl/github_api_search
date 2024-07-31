@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/routing/routes.dart';
-import '../../logic/followers_cubit/followers_cubit.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

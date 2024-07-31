@@ -31,11 +31,11 @@ class _AppLayoutState extends State<AppLayout> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               activeIcon: Icon(Icons.home_filled),
-              label: 'Currency'),
+              label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border),
             activeIcon: Icon(Icons.favorite),
-            label: 'Gold',
+            label: 'Favorites',
           ),
         ],
       ),

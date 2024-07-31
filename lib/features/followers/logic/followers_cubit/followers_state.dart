@@ -14,3 +14,7 @@ final class FollowersFailureState extends FollowersState {
   FollowersFailureState({required this.failureMsg});
 }
 
+class DeleteUserSearchState extends FollowersState{}
+
+class SearchUserState extends FollowersState{}
+

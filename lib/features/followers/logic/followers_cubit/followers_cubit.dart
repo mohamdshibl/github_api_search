@@ -10,7 +10,7 @@ class FollowersCubit extends Cubit<FollowersState> {
   FollowersCubit({required this.fetchFollowersRepo}) : super(FollowersInitialState());
 static FollowersCubit get(context) => BlocProvider.of(context);
 
-
+List<Followers> followersList = [];
   void getFollowers (String username,{int pages = 0}) async {
     print(username);
     emit(FollowersLoadingState());
@@ -22,10 +22,48 @@ static FollowersCubit get(context) => BlocProvider.of(context);
     print(failure.failMsg);
         },
         (followers) {
+          followersList = followers;
       print(followers[0].id);
       emit(FollowersSuccessState(followers: followers));}
   );
   }
 
+
+
+  // filter followers
+
+  List<Followers> searchList = [];
+  void searchJobs(String query) {
+    if (query==""){
+      searchList=[];
+      emit(DeleteUserSearchState());
+    }else{
+      followersList =  searchList.where((job) =>
+          job.login!.toLowerCase().contains(query.toLowerCase())).toList();
+      emit(SearchUserState());
+    }
+  }
+
+
+  void filterUsers(String filter) {
+    if (state is FollowersLoadingState) {
+      final currentState = state as FollowersLoadingState;
+
+      if (filter.isEmpty) {
+        emit(FollowersLoadingState(
+            // followers: followersList,
+            // hasReachedMax: currentState.hasReachedMax
+        ));
+      } else {
+        final filteredUsers = followersList
+            .where((follower) => follower.login!.toLowerCase().contains(filter.toLowerCase()))
+            .toList();
+        emit(FollowersLoadingState(
+            // followers: filteredUsers,
+            // hasReachedMax: currentState.hasReachedMax
+        ));
+      }
+    }
+  }
   }
 
