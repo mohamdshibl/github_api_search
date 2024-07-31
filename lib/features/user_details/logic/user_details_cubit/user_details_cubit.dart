@@ -9,7 +9,7 @@ part 'user_details_state.dart';
 class UserDetailsCubit extends Cubit<UserDetailsState> {
  final UserInfoRepo userInfoRepo ;
 
-  UserDetailsCubit(this.userInfoRepo) : super(UserDetailsInitial());
+  UserDetailsCubit({required this.userInfoRepo}) : super(UserDetailsInitial());
 
   static UserDetailsCubit get(context) => BlocProvider.of(context);
 
