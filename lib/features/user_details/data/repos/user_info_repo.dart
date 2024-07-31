@@ -19,11 +19,20 @@ class UserInfoRepoImpl implements UserInfoRepo {
   @override
   Future<Either<Failure, List<UserInfo>>> fetchUserInfoFromDataSource(String username) async {
     try {
+      print('shibl');
       final List<dynamic> response = await userInfoDataSource.fetchUserInfo(username);
       List<UserInfo> userDetails = response.map((item) => UserInfo.fromJson(item)).toList();
-
+      print(userDetails);
       return right(userDetails);
     }
+    // try {
+    //   final response = await userInfoDataSource.fetchUserInfo(username);
+    //   List<UserInfo> userDetails = [];
+    //   for (var i in response) {
+    //     userDetails.add(userDetails.fromJson(i));
+    //   }
+    //   return right(userDetails);
+    // }
     catch (e) {
       return left(ServerFailure());
     }

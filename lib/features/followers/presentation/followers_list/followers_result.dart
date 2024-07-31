@@ -86,6 +86,7 @@ class _FollowersResultState extends State<FollowersResult> {
                                 Navigator.pushNamed(
                                   context,
                                   Routes.userDetailsScreen,
+                                  arguments: "${state.followers[index].login}"
                                 );
                               },
                               child: Container(

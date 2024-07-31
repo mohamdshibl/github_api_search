@@ -5,10 +5,13 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'features/followers/dependecy_injection/injection.dart';
 import 'features/followers/logic/followers_cubit/followers_cubit.dart';
+import 'features/user_details/dependency_injection/injection.dart';
+import 'features/user_details/logic/user_details_cubit/user_details_cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  init();
+  initSl();
+  initSt();
   runApp(MyApp(appRouter: AppRouter()));
 }
 
@@ -19,8 +22,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<FollowersCubit>(
-      create: (context) => sl<FollowersCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<FollowersCubit>(
+          create: (context) => sl<FollowersCubit>(),
+        ),
+        BlocProvider<UserDetailsCubit>(
+          create: (context) => st<UserDetailsCubit>(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

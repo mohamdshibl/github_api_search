@@ -23,16 +23,18 @@ class AppRouter {
             builder: (_) => FollowersResult(userName: args),
           );
         }
-        // Handle invalid arguments if necessary
         return _errorRoute(settings.name);
       case Routes.favoriteScreen:
         return MaterialPageRoute(
           builder: (_) => const FavoriteScreen(),
         );
       case Routes.userDetailsScreen:
-        return MaterialPageRoute(
-          builder: (_) =>  UserDetails(),
-        );
+        if (args is String) {
+          return MaterialPageRoute(
+            builder: (_) => UserDetails(userName: args),
+          );
+        }
+        return _errorRoute(settings.name);
       default:
         return _errorRoute(settings.name);
     }

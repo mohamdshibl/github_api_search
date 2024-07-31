@@ -8,28 +8,28 @@ import '../logic/user_details_cubit/user_details_cubit.dart';
 
 
 
-GetIt sl = GetIt.instance;
+GetIt st = GetIt.instance;
 
-void init(){
+void initSt(){
   // Register WebService first
-  sl.registerLazySingleton<WebService>(() => WebServiceWithDioImpl(
-    baseUrl: baseUrl,
-    headers: {'accept': 'application/vnd.github+json'},
-  ));
+  // st.registerLazySingleton<WebService>(() => WebServiceWithDioImpl(
+  //   baseUrl: baseUrl,
+  //   headers: {'accept': 'application/vnd.github+json'},
+  // ));
 
   // Register FetchFollowersDataSource with the required WebService
-  sl.registerLazySingleton<FetchUserInfoDataSource>(
-        () => FetchUserInfoDataSourceImpl(sl<WebService>()),
+  st.registerLazySingleton<FetchUserInfoDataSource>(
+        () => FetchUserInfoDataSourceImpl(st<WebService>()),
   );
 
   // Register FetchFollowersRepo
-  sl.registerLazySingleton<UserInfoRepo>(
-        () => UserInfoRepoImpl(sl<FetchUserInfoDataSource>()),
+  st.registerLazySingleton<UserInfoRepo>(
+        () => UserInfoRepoImpl(st<FetchUserInfoDataSource>()),
   );
 
   // Register FollowersCubit
-  sl.registerLazySingleton(
-        () => UserDetailsCubit(userInfoRepo: sl<UserInfoRepo>()),
+  st.registerFactory(
+        () => UserDetailsCubit(userInfoRepo: st<UserInfoRepo>()),
   );
 
 }

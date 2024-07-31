@@ -8,7 +8,7 @@ import '../logic/followers_cubit/followers_cubit.dart';
 
 GetIt sl = GetIt.instance;
 
-void init(){
+void initSl(){
   // Register WebService first
   sl.registerLazySingleton<WebService>(() => WebServiceWithDioImpl(
     baseUrl: baseUrl,

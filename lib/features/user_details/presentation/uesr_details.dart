@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:task_one/features/user_details/logic/user_details_cubit/user_details_cubit.dart';
 
-class UserDetails extends StatelessWidget {
-   UserDetails({super.key});
+class UserDetails extends StatefulWidget {
+  final String userName;
+   UserDetails({super.key, required this.userName});
+
+  @override
+  State<UserDetails> createState() => _UserDetailsState();
+}
+
+class _UserDetailsState extends State<UserDetails> {
 
   double screenHeight = 0;
   double screenWidth = 0;
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var cubit = UserDetailsCubit.get(context);
+    cubit.getFollowers(widget.userName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +52,10 @@ class UserDetails extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text(
-                  'User Name',
-                  style: TextStyle(
+                child: Text(widget.userName,
+                  style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       color: Colors.black26,
                       fontSize: 50),
