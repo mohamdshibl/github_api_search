@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/routing/routes.dart';
+import '../../logic/followers_cubit/followers_cubit.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -11,18 +15,10 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController textEditingController = TextEditingController();
   double screenHeight = 0;
 
-  void _getFollowers() {
-      if (textEditingController.text == '')
-  {
 
-  }else {
-
-}
-  }
   @override
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Container(
         height: screenHeight,
@@ -55,14 +51,26 @@ class _SearchScreenState extends State<SearchScreen> {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Github username',
-                      hintStyle: TextStyle(color: Colors.purpleAccent),
+                      hintStyle: TextStyle(color: Colors.deepPurpleAccent),
                     ),
+                    //onSubmitted: getFollowers(),
                   ),
                 ),
                 const SizedBox(height: 100,),
                 ElevatedButton(
                     onPressed: () {
-                      _getFollowers();
+                      if (textEditingController.text.isEmpty)
+                      { return;
+                      }else{
+                       // Navigator.pushNamed(context, Routes.followersScreen);
+                        Navigator.pushNamed(
+                          context,
+                          Routes.followersScreen,
+                          arguments:textEditingController.text,
+                        );
+                      }
+                   //   getFollowers();
+
                     },
                     child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
@@ -71,7 +79,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             color: Colors.white.withOpacity(.1)
                         ),
                         child: const Text('Get Followers',
-                          style: TextStyle(color: Colors.purpleAccent,fontSize: 20,),)
+                          style: TextStyle(color: Colors.deepPurpleAccent,fontSize: 20,),)
                     )
                 ),
               ],
@@ -80,5 +88,8 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
     );
+  }
+  void getFollowers() {
+
   }
 }

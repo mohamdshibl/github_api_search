@@ -6,7 +6,7 @@ sealed class FollowersState {}
 final class FollowersInitialState extends FollowersState {}
 final class FollowersLoadingState extends FollowersState {}
 final class FollowersSuccessState extends FollowersState {
-  final List<dynamic> followers;
+  final List<Followers> followers;
   FollowersSuccessState({required this.followers});
 }
 final class FollowersFailureState extends FollowersState {

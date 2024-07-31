@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
 import 'features/followers/dependecy_injection/injection.dart';
 import 'features/followers/logic/followers_cubit/followers_cubit.dart';
-import 'features/followers/presentation/search/search_screen.dart';
-import 'features/user_details/presentation/uesr_details.dart';
 import 'layout/app_layout.dart';
+
 void main() {
-  runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   init();
+  runApp(MyApp(appRouter: AppRouter()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AppRouter appRouter;
 
-  // This widget is the root of your application.
+  const MyApp({super.key, required this.appRouter});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<FollowersCubit>(
-    create: (context) => sl<FollowersCubit>(),
-    child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      create: (context) => sl<FollowersCubit>(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        initialRoute: Routes.appLayout,
+        onGenerateRoute: appRouter.generateRoute,
       ),
-      home: AppLayout(),
-    ),
-);
+    );
   }
 }
 

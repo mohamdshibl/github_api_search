@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_one/features/followers/data/repos/fetch_followers_repo.dart';
+import 'package:task_one/features/followers/model/followers.dart';
 
 part 'followers_state.dart';
 
@@ -11,13 +12,14 @@ static FollowersCubit get(context) => BlocProvider.of(context);
 
 
   void getFollowers (String username,{int pages = 0}) async {
+    print(username);
     emit(FollowersLoadingState());
   final either =
     await fetchFollowersRepo.fetchUserFollowersFromDataSource( username, pages: pages) ;
   either.fold(
         (failure){
     emit(FollowersFailureState(failureMsg: failure.failMsg));
-    //print(failure.failMsg);
+    print(failure.failMsg);
         },
         (followers) {
       print(followers[0].id);

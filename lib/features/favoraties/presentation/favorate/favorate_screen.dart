@@ -8,8 +8,8 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black26,
         appBar: AppBar(
-          centerTitle:true ,
-          backgroundColor: Colors.white,
+          centerTitle:true,
+          backgroundColor: Colors.black12,
           elevation: 0,
           title: const Text(
             'Favorites',
