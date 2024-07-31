@@ -2,13 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:task_one/core/errors/failures.dart';
 
 
-import '../../presentation/uesr_details.dart';
 import '../data_source/user_info_remote_data_source.dart';
+import '../model/user_model/user.dart';
 
 
 
 abstract class UserInfoRepo {
-  Future<Either<Failure, List<UserDetails>>> fetchUserInfoFromDataSource(String username);
+  Future<Either<Failure, List<UserInfo>>> fetchUserInfoFromDataSource(String username);
 }
 
 class UserInfoRepoImpl implements UserInfoRepo {
@@ -17,10 +17,10 @@ class UserInfoRepoImpl implements UserInfoRepo {
   UserInfoRepoImpl(this.userInfoDataSource);
 
   @override
-  Future<Either<Failure, List<UserDetails>>> fetchUserInfoFromDataSource(String username) async {
+  Future<Either<Failure, List<UserInfo>>> fetchUserInfoFromDataSource(String username) async {
     try {
       final List<dynamic> response = await userInfoDataSource.fetchUserInfo(username);
-      List<UserDetails> userDetails = response.map((item) => UserDetails.fromJson(item)).toList();
+      List<UserInfo> userDetails = response.map((item) => UserInfo.fromJson(item)).toList();
 
       return right(userDetails);
     }

@@ -1,5 +1,5 @@
-class UserDetails {
-  UserDetails({
+class UserInfo {
+  UserInfo({
     required this.login,
     required this.id,
     required this.avatarUrl,
@@ -39,7 +39,7 @@ class UserDetails {
   final int? followers;
   final int? following;
 
-  UserDetails copyWith({
+  UserInfo copyWith({
     String? login,
     int? id,
     String? avatarUrl,
@@ -59,7 +59,7 @@ class UserDetails {
     int? followers,
     int? following,
   }) {
-    return UserDetails(
+    return UserInfo(
       login: login ?? this.login,
       id: id ?? this.id,
       avatarUrl: avatarUrl ?? this.avatarUrl,
@@ -81,8 +81,8 @@ class UserDetails {
     );
   }
 
-  factory UserDetails.fromJson(Map<String, dynamic> json){
-    return UserDetails(
+  factory UserInfo.fromJson(Map<String, dynamic> json){
+    return UserInfo(
       login: json["login"],
       id: json["id"],
       avatarUrl: json["avatar_url"],
