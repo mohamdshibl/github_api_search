@@ -3,7 +3,7 @@ import 'package:task_one/features/user_details/logic/user_details_cubit/user_det
 
 class UserDetails extends StatefulWidget {
   final String userName;
-   UserDetails({super.key, required this.userName});
+   const UserDetails({super.key, required this.userName});
 
   @override
   State<UserDetails> createState() => _UserDetailsState();
@@ -14,6 +14,7 @@ class _UserDetailsState extends State<UserDetails> {
   double screenHeight = 0;
   double screenWidth = 0;
 
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -27,6 +28,23 @@ class _UserDetailsState extends State<UserDetails> {
     screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.black12,
+        elevation: 0,
+        title: const Text(
+          'Followers',
+        ),
+        leading: TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+      ),
       backgroundColor: Colors.deepPurple,
       body: SingleChildScrollView(
         child: SafeArea(
@@ -53,7 +71,7 @@ class _UserDetailsState extends State<UserDetails> {
                 height: 50,
               ),
                Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(widget.userName,
                   style: const TextStyle(
                       fontWeight: FontWeight.w900,

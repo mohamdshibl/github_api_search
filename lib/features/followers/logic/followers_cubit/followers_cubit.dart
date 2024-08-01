@@ -23,7 +23,7 @@ List<Followers> followersList = [];
         },
         (followers) {
           followersList = followers;
-      print(followers[0].id);
+      print(followers[0].login);
       emit(FollowersSuccessState(followers: followers));}
   );
   }

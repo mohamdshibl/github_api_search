@@ -8,7 +8,7 @@ import '../model/user_model/user.dart';
 
 
 abstract class UserInfoRepo {
-  Future<Either<Failure, List<UserInfo>>> fetchUserInfoFromDataSource(String username);
+  Future<Either<Failure, UserInfo>> fetchUserInfoFromDataSource(String username);
 }
 
 class UserInfoRepoImpl implements UserInfoRepo {
@@ -17,22 +17,11 @@ class UserInfoRepoImpl implements UserInfoRepo {
   UserInfoRepoImpl(this.userInfoDataSource);
 
   @override
-  Future<Either<Failure, List<UserInfo>>> fetchUserInfoFromDataSource(String username) async {
+  Future<Either<Failure, UserInfo>> fetchUserInfoFromDataSource(String username) async {
     try {
-      print('shibl');
-      final List<dynamic> response = await userInfoDataSource.fetchUserInfo(username);
-      List<UserInfo> userDetails = response.map((item) => UserInfo.fromJson(item)).toList();
-      print(userDetails);
-      return right(userDetails);
+      final response = (await userInfoDataSource.fetchUserInfo(username)) ;
+      return right(UserInfo.fromJson(response));
     }
-    // try {
-    //   final response = await userInfoDataSource.fetchUserInfo(username);
-    //   List<UserInfo> userDetails = [];
-    //   for (var i in response) {
-    //     userDetails.add(userDetails.fromJson(i));
-    //   }
-    //   return right(userDetails);
-    // }
     catch (e) {
       return left(ServerFailure());
     }

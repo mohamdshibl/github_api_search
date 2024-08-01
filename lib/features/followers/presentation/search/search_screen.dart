@@ -22,16 +22,17 @@ class _SearchScreenState extends State<SearchScreen> {
         height: screenHeight,
         color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding:  EdgeInsets.all(20.0),
           child:  SingleChildScrollView(
             child: Column(
               children: [
                 const SizedBox(height: 100,),
                 const SizedBox(
-                  width: 80,height: 80,
+                  width: 80,
+                  height: 80,
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    backgroundImage: NetworkImage('https://w7.pngwing.com/pngs/857/611/png-transparent-github-git-hub-logo-icon-thumbnail.png'),
+                    backgroundImage: AssetImage('assets/images/Github-desktop-logo-symbol.png'),
                   ),
                 ),
                 const SizedBox(height: 30,),

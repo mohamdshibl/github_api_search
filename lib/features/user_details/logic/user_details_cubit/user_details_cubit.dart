@@ -22,8 +22,8 @@ class UserDetailsCubit extends Cubit<UserDetailsState> {
           print(failure.failMsg);
         },
             (userInfo) {
-          print(userInfo[0].login);
-          emit(UserDetailsSuccessState(followers: userInfo));}
+          print(userInfo.login);
+          emit(UserDetailsSuccessState(userInfo: userInfo));}
     );
   }
 
