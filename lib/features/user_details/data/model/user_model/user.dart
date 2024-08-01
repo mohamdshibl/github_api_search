@@ -19,6 +19,7 @@ class UserInfo {
     required this.publicGists,
     required this.followers,
     required this.following,
+    required this.favorite, // Added favorite
   });
 
   final String? login;
@@ -40,6 +41,7 @@ class UserInfo {
   final int? publicGists;
   final int? followers;
   final int? following;
+  final bool favorite; // Added favorite
 
   UserInfo copyWith({
     String? login,
@@ -61,12 +63,14 @@ class UserInfo {
     int? publicGists,
     int? followers,
     int? following,
+    bool? favorite, // Added favorite
   }) {
     return UserInfo(
       login: login ?? this.login,
       id: id ?? this.id,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       url: url ?? this.url,
+      htmlUrl: htmlUrl ?? this.htmlUrl,
       followersUrl: followersUrl ?? this.followersUrl,
       followingUrl: followingUrl ?? this.followingUrl,
       starredUrl: starredUrl ?? this.starredUrl,
@@ -80,17 +84,18 @@ class UserInfo {
       publicRepos: publicRepos ?? this.publicRepos,
       publicGists: publicGists ?? this.publicGists,
       followers: followers ?? this.followers,
-      following: following ?? this.following, htmlUrl: '',
+      following: following ?? this.following,
+      favorite: favorite ?? this.favorite, // Added favorite
     );
   }
 
-  factory UserInfo.fromJson(Map<String, dynamic> json){
+  factory UserInfo.fromJson(Map<String, dynamic> json) {
     return UserInfo(
       login: json["login"],
       id: json["id"],
       avatarUrl: json["avatar_url"],
       url: json["url"],
-      htmlUrl:  json['html_url'] ?? 'https://github.com/hasantayyar',
+      htmlUrl: json['html_url'] ?? 'https://github.com/hasantayyar',
       followersUrl: json["followers_url"],
       followingUrl: json["following_url"],
       starredUrl: json["starred_url"],
@@ -105,6 +110,7 @@ class UserInfo {
       publicGists: json["public_gists"],
       followers: json["followers"],
       following: json["following"],
+      favorite: json["favorite"] == 1, // Convert from JSON value
     );
   }
 
@@ -127,12 +133,13 @@ class UserInfo {
     "public_gists": publicGists,
     "followers": followers,
     "following": following,
+    "favorite": favorite ? 1 : 0, // Convert to JSON value
   };
 
   @override
-  String toString(){
+  String toString() {
     return "$login, $id, $avatarUrl, $url, $followersUrl, $followingUrl, "
         "$starredUrl, $subscriptionsUrl, $organizationsUrl, $reposUrl, $name,"
-        " $location, $email, $bio, $publicRepos, $publicGists, $followers, $following, ";
+        " $location, $email, $bio, $publicRepos, $publicGists, $followers, $following, $favorite";
   }
 }

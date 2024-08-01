@@ -20,7 +20,7 @@ class SqlDb {
 
     // Get a location using getDatabasesPath
     var databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, 'employee.db');
+    String path = join(databasesPath, 'favorite.db');
 
 // open the database
     Database database = await openDatabase(path, version: 1,
@@ -28,7 +28,7 @@ class SqlDb {
           // When creating the db, create the table
           await db.execute(
               '''
-      CREATE TABLE User (
+      CREATE TABLE Favorite (
         id INTEGER PRIMARY KEY AUTOINCREMENT, 
         name TEXT NOT NULL, 
         avatarUrl TEXT NOT NULL
