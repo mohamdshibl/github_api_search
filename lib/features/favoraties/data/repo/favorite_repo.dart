@@ -10,10 +10,10 @@ abstract class UserFavoriteRepo {
   Future<Either<Failure, bool>> deleteFavoriteUserFromDatasource(UserInfo user) ;
 }
 
-class UserInfoRepoImpl implements UserFavoriteRepo {
+class UserFavoriteRepoImpl implements UserFavoriteRepo {
   final DbHelper dbHelper;
 
-  UserInfoRepoImpl(this.dbHelper);
+  UserFavoriteRepoImpl(this.dbHelper);
 
   @override
   Future<Either<Failure,  List<UserInfo>>> fetchFavoriteUsersFromDatasource() async {

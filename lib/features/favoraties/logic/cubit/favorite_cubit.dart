@@ -23,32 +23,32 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
 
 
-  void getFavoriteUsers () async {
-  emit(FavoriteUserLoadingState());
-    final either = await userFavoriteRepo.fetchFavoriteUsersFromDatasource() ;
-    either.fold(
-            (failure){
-          emit(FavoriteUserFailureState(failureMsg: failure.failMsg));
-        },
-            (userInfo) {
-          emit(FavoriteUserSuccessState(userInfo: userInfo));}
-    );
-  }
-
-  Future<void> insertFavoriteUser(UserInfo user) async {
-    emit(FavoriteUserLoadingState()); // Emit loading state
-
-    final Either<Failure, List<UserInfo>> result = await userFavoriteRepo.insertFavoriteUsersFromDatasource(user);
-
-    result.fold(
-          (failure) {
-        emit(FavoriteUserFailureState(failureMsg: failure.failMsg));
-      },
-          (users) {
-        emit(FavoriteUserSuccessState(userInfo: users));
-      },
-    );
-  }
+  // void getFavoriteUsers () async {
+  // emit(FavoriteUserLoadingState());
+  //   final either = await userFavoriteRepo.fetchFavoriteUsersFromDatasource() ;
+  //   either.fold(
+  //           (failure){
+  //         emit(FavoriteUserFailureState(failureMsg: failure.failMsg));
+  //       },
+  //           (userInfo) {
+  //         emit(FavoriteUserSuccessState(userInfo: userInfo));}
+  //   );
+  // }
+  //
+  // Future<void> insertFavoriteUser(UserInfo user) async {
+  //   emit(FavoriteUserLoadingState()); // Emit loading state
+  //
+  //   final Either<Failure, List<UserInfo>> result = await userFavoriteRepo.insertFavoriteUsersFromDatasource(user);
+  //
+  //   result.fold(
+  //         (failure) {
+  //       emit(FavoriteUserFailureState(failureMsg: failure.failMsg));
+  //     },
+  //         (users) {
+  //       emit(FavoriteUserSuccessState(userInfo: users));
+  //     },
+  //   );
+  // }
 
   // Future<void> deleteFavoriteUser(UserInfo user) async {
   //   emit(FavoriteUserLoadingState()); // Emit loading state

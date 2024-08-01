@@ -3,7 +3,7 @@ import '../../../user_details/data/model/user_model/user.dart';
 import '../model/userState.dart';
 
 class DbHelper extends SqlDb {
-  DbHelper(param0);
+ // DbHelper(param0);
 
 
   Future<List<UserInfo>> getAllPerson() async {

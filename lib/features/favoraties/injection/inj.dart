@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import '../../../core/data_base/sql_db.dart';
+import 'package:task_one/core/data_base/sql_db.dart';
 import '../data/local_data_source/user_info_local_data_source.dart';
 import '../data/repo/favorite_repo.dart';
 import '../logic/cubit/favorite_cubit.dart';
@@ -11,17 +11,15 @@ void initSd(){
 
 
   // Register FetchFollowersDataSource with the required WebService
-  sd.registerLazySingleton<DbHelper>(
-        () => DbHelper(sd<SqlDb>()),
-  );
+  sd.registerLazySingleton<DbHelper>(() => DbHelper(),);
 
   // Register FetchFollowersRepo
   sd.registerLazySingleton<UserFavoriteRepo>(
-        () => UserInfoRepoImpl(sd<DbHelper>()),
+        () => UserFavoriteRepoImpl(sd<DbHelper>()),
   );
 
   // Register FollowersCubit
-  sd.registerFactory(
+  sd.registerLazySingleton(
         () => FavoriteCubit(userFavoriteRepo: sd<UserFavoriteRepo>()),
   );
   // sd.registerFactory(
