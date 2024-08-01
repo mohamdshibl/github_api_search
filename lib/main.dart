@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
+import 'features/favoraties/injection/inj.dart';
 import 'features/followers/dependecy_injection/injection.dart';
 import 'features/followers/logic/followers_cubit/followers_cubit.dart';
 import 'features/user_details/dependency_injection/injection.dart';
@@ -12,6 +13,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   initSl();
   initSt();
+  initSd();
   runApp(MyApp(appRouter: AppRouter()));
 }
 
@@ -30,6 +32,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<UserDetailsCubit>(
           create: (context) => st<UserDetailsCubit>(),
         ),
+        // BlocProvider<FavoriteCubit>(
+        //   create: (context) => st<FavoriteCubit>(),
+        // ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

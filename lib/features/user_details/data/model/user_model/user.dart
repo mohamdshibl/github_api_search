@@ -4,6 +4,7 @@ class UserInfo {
     required this.id,
     required this.avatarUrl,
     required this.url,
+    required this.htmlUrl,
     required this.followersUrl,
     required this.followingUrl,
     required this.starredUrl,
@@ -24,6 +25,7 @@ class UserInfo {
   final int? id;
   final String? avatarUrl;
   final String? url;
+  final String? htmlUrl;
   final String? followersUrl;
   final String? followingUrl;
   final String? starredUrl;
@@ -44,6 +46,7 @@ class UserInfo {
     int? id,
     String? avatarUrl,
     String? url,
+    String? htmlUrl,
     String? followersUrl,
     String? followingUrl,
     String? starredUrl,
@@ -77,7 +80,7 @@ class UserInfo {
       publicRepos: publicRepos ?? this.publicRepos,
       publicGists: publicGists ?? this.publicGists,
       followers: followers ?? this.followers,
-      following: following ?? this.following,
+      following: following ?? this.following, htmlUrl: '',
     );
   }
 
@@ -87,6 +90,7 @@ class UserInfo {
       id: json["id"],
       avatarUrl: json["avatar_url"],
       url: json["url"],
+      htmlUrl:  json['html_url'] ?? 'https://github.com/hasantayyar',
       followersUrl: json["followers_url"],
       followingUrl: json["following_url"],
       starredUrl: json["starred_url"],
@@ -96,7 +100,7 @@ class UserInfo {
       name: json["name"],
       location: json["location"],
       email: json["email"],
-      bio: json["bio"],
+      bio: json["bio"] ?? 'developer',
       publicRepos: json["public_repos"],
       publicGists: json["public_gists"],
       followers: json["followers"],

@@ -19,10 +19,8 @@ class UserDetailsCubit extends Cubit<UserDetailsState> {
     either.fold(
             (failure){
           emit(UserDetailsFailureState(failureMsg: failure.failMsg));
-          print(failure.failMsg);
         },
             (userInfo) {
-          print(userInfo.login);
           emit(UserDetailsSuccessState(userInfo: userInfo));}
     );
   }

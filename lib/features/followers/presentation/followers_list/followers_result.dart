@@ -49,7 +49,6 @@ class _FollowersResultState extends State<FollowersResult> {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search',
-                 // hintStyle: getMediumStyle(color: AppTheme.grey),
                   prefixIcon: const Icon(
                     Icons.search,
                     color: Colors.grey,

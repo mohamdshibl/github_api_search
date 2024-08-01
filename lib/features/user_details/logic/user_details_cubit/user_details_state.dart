@@ -9,6 +9,12 @@ final class UserDetailsSuccessState extends UserDetailsState {
   final  userInfo;
   UserDetailsSuccessState({required this.userInfo});
 }
+final class ChangeFavoriteBtmState extends UserDetailsState{
+  final bool isFavorite ;
+  ChangeFavoriteBtmState(this.isFavorite);
+
+}
+
 final class UserDetailsFailureState extends UserDetailsState {
   final String failureMsg;
   UserDetailsFailureState({required this.failureMsg});

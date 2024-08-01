@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task_one/core/routing/routes.dart';
+import 'package:task_one/features/user_details/presentation/webView/webview.dart';
 
 import '../../features/favoraties/presentation/favorate/favorate_screen.dart';
 import '../../features/followers/presentation/followers_list/followers_result.dart';
@@ -32,6 +33,13 @@ class AppRouter {
         if (args is String) {
           return MaterialPageRoute(
             builder: (_) => UserDetails(userName: args),
+          );
+        }
+        return _errorRoute(settings.name);
+      case Routes.webView:
+        if (args is String) {
+          return MaterialPageRoute(
+            builder: (_) => WebViewScreen(url: args),
           );
         }
         return _errorRoute(settings.name);
