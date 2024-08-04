@@ -41,12 +41,9 @@ class SqlDb {
   }
 
   inquiry(String sqlTxt) async{
-
     Database? db = await getInstance;
-
     // Get the records
     List<Map> list = await db!.rawQuery(sqlTxt);
-
     return list;
   }
 
@@ -70,9 +67,3 @@ class SqlDb {
   }
 }
 
-// CREATE TABLE Account (
-//   id INTEGER PRIMARY KEY AUTOINCREMENT,
-//   person_id INTEGER NOT NULL,
-//   account INTEGER NOT NULL,
-//   value REAL
-// );

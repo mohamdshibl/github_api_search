@@ -26,7 +26,7 @@ void initSl(){
   );
 
   // Register FollowersCubit
-  sl.registerLazySingleton(
+  sl.registerFactory(
         () => FollowersCubit(fetchFollowersRepo: sl<FetchFollowersRepo>()),
   );
 

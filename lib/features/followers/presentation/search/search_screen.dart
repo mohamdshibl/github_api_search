@@ -22,7 +22,7 @@ class _SearchScreenState extends State<SearchScreen> {
         height: screenHeight,
         color: Colors.black,
         child: Padding(
-          padding:  EdgeInsets.all(20.0),
+          padding:  const EdgeInsets.all(20.0),
           child:  SingleChildScrollView(
             child: Column(
               children: [
@@ -68,9 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           arguments:textEditingController.text,
                         );
                       }
-                   //   getFollowers();
-
-                    },
+                      },
                     child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                         decoration: BoxDecoration(
@@ -87,8 +85,5 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
     );
-  }
-  void getFollowers() {
-
   }
 }
