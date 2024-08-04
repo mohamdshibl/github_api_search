@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_one/features/user_details/logic/user_details_cubit/user_details_cubit.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../favoraties/injection/inj.dart';
 import '../../favoraties/logic/cubit/favorite_cubit.dart';
 
@@ -168,10 +169,10 @@ class _UserDetailsState extends State<UserDetails> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              // print('${state.userInfo.htmlUrl} ');
-                              // Navigator.pushNamed(
-                              //     context, Routes.userDetailsScreen,
-                              //     arguments: "${state.userInfo.htmlUrl}");
+                              Navigator.pushNamed(
+                                  context, Routes.webView,
+                                  arguments: "${state.userInfo.htmlUrl}"
+                              );
                             },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(
